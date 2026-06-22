@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Volunteer Dashboard - NayePankh Foundation</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: #f5f7fa;
+            min-height: 100vh;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .navbar .user-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .navbar .user-info span {
+            font-weight: 600;
+        }
+        
+        .btn-logout {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-logout:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .welcome-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+        
+        .welcome-section h1 {
+            font-size: 32px;
+            color: #333;
+        }
+        
+        .welcome-section h1 span {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .welcome-section p {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .activity-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            border-top: 4px solid #667eea;
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .activity-card .icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .activity-card h3 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+        
+        .activity-card p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .card-education {
+            border-top-color: #667eea;
+        }
+        
+        .card-health {
+            border-top-color: #f093fb;
+        }
+        
+        .card-social {
+            border-top-color: #f5576c;
+        }
+        
+        .table-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            overflow-x: auto;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        table tr:hover {
+            background: #f8f9ff;
+        }
+        
+        .donate-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+        }
+        
+        .donate-section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .donate-section p {
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .btn-donate {
+            background: white;
+            color: #764ba2;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-donate:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .btn-donate a {
+            text-decoration: none;
+            color: #764ba2;
+        }
+        
+        .stats-mini {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-mini-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .stat-mini-card .number {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-mini-card .label {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .navbar .user-info {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .welcome-section h1 {
+                font-size: 24px;
+            }
+            
+            .activity-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🕊️ NayePankh</div>
+        <div class="user-info">
+            <span id="userNameDisplay">Welcome 👋</span>
+            <button class="btn-logout" id="logoutBtn">Logout</button>
+        </div>
+    </nav>
+    
+    <div class="dashboard-container">
+        <!-- Welcome Section -->
+        <div class="welcome-section">
+            <h1>Welcome <span id="volunteerName">Volunteer</span> 👋</h1>
+            <p>Thank you for being a part of our mission. Together, we make a difference!</p>
+        </div>
+        
+        <!-- Mini Stats -->
+        <div class="stats-mini">
+            <div class="stat-mini-card">
+                <div class="number" id="totalVolunteers">0</div>
+                <div class="label">Total Volunteers</div>
+            </div>
+            <div class="stat-mini-card">
+                <div class="number" id="totalDonations">0</div>
+                <div class="label">Donations Made</div>
+            </div>
+            
+        </div>
+        
+        <!-- Volunteer Activities -->
+        <h2 class="section-title">🌟 Volunteer Activities</h2>
+        <div class="activity-grid">
+            <div class="activity-card card-education">
+                <div class="icon">📚</div>
+                <h3>Education</h3>
+                <p>Join educational programs and help shape young minds.</p>
+            </div>
+            <div class="activity-card card-health">
+                <div class="icon">🏥</div>
+                <h3>Health</h3>
+                <p>Participate in health camps and awareness programs.</p>
+            </div>
+            <div class="activity-card card-social">
+                <div class="icon">🤝</div>
+                <h3>Social Activities</h3>
+                <p>Community service projects and environmental campaigns.</p>
+            </div>
+        </div>
+        
+        <!-- Upcoming Events -->
+        <h2 class="section-title">📅 Upcoming Events</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Event</th>
+                        <th>Location</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+               <tbody id="eventsTableBody"></tbody>
+                   
+                  
+                
+            </table>
+        </div>
+        
+        <!-- Donation Section -->
+        <div class="donate-section">
+            <h2>💝 Support Our Cause</h2>
+            <p>Every contribution makes a difference. Donate now to help us reach more people.</p>
+            <button class="btn-donate">
+                <a href="../donation/donation.html">Donate Now</a>
+            </button>
+        </div>
+    </div>
+    
+    <script type="module">
+        import { auth, db, collection, getDocs } from '../js/firebase-config.js';
+        import { signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        
+        // Check if user is logged in
+        const userEmail = sessionStorage.getItem('userEmail');
+        const userName = sessionStorage.getItem('userName') || 'Volunteer';
+        const userRole = sessionStorage.getItem('userRole');
+        
+        if (!userEmail) {
+            window.location.href = '../login.html';
+        }
+        
+        if (userRole === 'admin') {
+            window.location.href = '../admin/dashboard.html';
+        }
+        
+        // Display user name
+        document.getElementById('volunteerName').textContent = userName;
+        document.getElementById('userNameDisplay').textContent = `Welcome ${userName} 👋`;
+        
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                sessionStorage.clear();
+                window.location.href = '../login.html';
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        });
+        async function fetchEvents(){
+
+    const snapshot =
+        await getDocs(collection(db,'events'));
+
+    const tbody =
+        document.getElementById('eventsTableBody');
+
+    tbody.innerHTML = '';
+
+    snapshot.forEach(doc => {
+
+        const data = doc.data();
+
+        tbody.innerHTML += `
+        <tr>
+            <td>${data.date}</td>
+            <td>${data.name}</td>
+            <td>${data.location}</td>
+            <td>Upcoming</td>
+        </tr>
+        `;
+    });
+
+    document.getElementById('totalEvents').textContent =
+        snapshot.size;
+}
+
+fetchEvents();
+        // Fetch real statistics
+        async function fetchStats() {
+            try {
+                // Get total volunteers
+                const volunteersSnapshot = await getDocs(collection(db, 'volunteers'));
+                document.getElementById('totalVolunteers').textContent = volunteersSnapshot.size;
+                
+                // Get total donations
+                const donationsSnapshot = await getDocs(collection(db, 'donations'));
+                document.getElementById('totalDonations').textContent = donationsSnapshot.size;
+                
+                // Get events (you can add events collection later)
+                // For now, show static count
+                document.getElementById('totalEvents').textContent = '3';
+                
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+            }
+        }
+        
+        fetchStats();
+    </script>
+</body>
+</html> 

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NayePankh Foundation</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            min-height: 100vh;
+        }
+
+        .gradient-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px 0;
+            color: white;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            padding: 8px 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            border-radius: 0 0 50% 50% / 20%;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #764ba2;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #764ba2;
+            transform: translateY(-3px);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.8;
+            color: #444;
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .mission-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            border: 1px solid rgba(118, 75, 162, 0.1);
+        }
+
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(118, 75, 162, 0.15);
+        }
+
+        .mission-card .icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .mission-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .mission-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .card-education {
+            border-top: 4px solid #667eea;
+        }
+
+        .card-health {
+            border-top: 4px solid #f093fb;
+        }
+
+        .card-social {
+            border-top: 4px solid #f5576c;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 0;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #2d1b69 0%, #1a0f3d 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .nav-links a {
+                margin-left: 10px;
+                padding: 6px 15px;
+                font-size: 14px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="gradient-header">
+        <nav>
+            <div class="logo">🕊️ NayePankh</div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="register.html">Register</a>
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Empowering Lives Through Education, Healthcare and Social Service</h1>
+            <p>Join us in making a difference in the lives of thousands</p>
+            <div class="hero-buttons">
+                <a href="register.html" class="btn btn-primary">Become a Volunteer</a>
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="donation/donation.html" class="btn btn-gradient">Donate Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">About NayePankh Foundation</h2>
+            <p class="section-subtitle">Creating positive social impact since 2020</p>
+            <div class="about-content">
+                <p>NayePankh Foundation is a non-profit organization dedicated to creating positive social impact through education, healthcare support, community development, and volunteer-driven initiatives. We believe in empowering communities and transforming lives.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="section" style="background: #f8f9ff;">
+        <div class="container">
+            <h2 class="section-title">Our Mission</h2>
+            <p class="section-subtitle">Making a difference through focused initiatives</p>
+            <div class="mission-grid">
+                <div class="mission-card card-education">
+                    <div class="icon">📚</div>
+                    <h3>Education</h3>
+                    <p>Free learning programs for underprivileged children, school support initiatives, and skill development workshops.</p>
+                </div>
+                <div class="mission-card card-health">
+                    <div class="icon">🏥</div>
+                    <h3>Health</h3>
+                    <p>Medical camps in rural areas, health awareness programs, and accessible healthcare for all communities.</p>
+                </div>
+                <div class="mission-card card-social">
+                    <div class="icon">🤝</div>
+                    <h3>Social Activities</h3>
+                    <p>Community service projects, environmental campaigns, and women empowerment initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="section">
+        <div class="container">
+            <div class="stats-section" id="statsSection">
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-item">
+                        <span class="stat-number" id="volunteerCount">500+</span>
+                        <span class="stat-label">Volunteers</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="beneficiaryCount">2000+</span>
+                        <span class="stat-label">Beneficiaries</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="campaignCount">100+</span>
+                        <span class="stat-label">Campaigns</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" id="donationAmount">₹5,00,000</span>
+                        <span class="stat-label">Donations</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 NayePankh Foundation. All rights reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Together, we can make a difference.</p>
+        </div>
+    </footer>
+
+    <script type="module">
+        import { db, collection, getDocs } from './js/firebase-config.js';
+
+        // Fetch real data from Firebase
+        async function fetchStats() {
+            try {
+                // Get volunteers count
+                const volunteersSnapshot = await getDocs(collection(db, 'volunteers'));
+                const volunteerCount = volunteersSnapshot.size;
+                document.getElementById('volunteerCount').textContent = volunteerCount > 0 ? volunteerCount : '0';
+
+                // Get donations count and amount
+                const donationsSnapshot = await getDocs(collection(db, 'donations'));
+                const donationCount = donationsSnapshot.size;
+                document.getElementById('beneficiaryCount').textContent = donationCount > 0 ? donationCount : '0';
+
+                let totalAmount = 0;
+                donationsSnapshot.forEach(doc => {
+                    const data = doc.data();
+                    if (data.amount) {
+                        totalAmount += parseFloat(data.amount);
+                    }
+                });
+
+                if (totalAmount > 0) {
+                    document.getElementById('donationAmount').textContent = '₹' + totalAmount.toLocaleString();
+                }
+
+                // Campaign count (you can add a campaigns collection later)
+                document.getElementById('campaignCount').textContent = '25+';
+
+            } catch (error) {
+                console.error('Error fetching stats:', error);
+            }
+        }
+
+        fetchStats();
+    </script>
+</body>
+</html>
